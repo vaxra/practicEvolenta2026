@@ -1,9 +1,0 @@
-com\example\demo\service\MessageService.class
-com\example\demo\dto\Person.class
-com\example\demo\repository\PersonRepository.class
-com\example\demo\Application.class
-com\example\demo\controller\PersonController.class
-com\example\demo\controller\MessageController.class
-com\example\demo\repository\MessageRepository.class
-com\example\demo\dto\Message.class
-com\example\demo\service\PersonService.class
