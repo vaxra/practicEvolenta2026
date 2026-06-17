@@ -1,0 +1,16 @@
+com\example\demo\DemoApplication.class
+com\example\demo\CalculatorRunner.class
+com\example\demo\Calculator.class
+com\example\demo\dto\Person.class
+com\example\demo\Multiplier.class
+com\example\demo\controller\MessageController.class
+com\example\demo\dto\Message.class
+com\example\demo\Operation.class
+com\example\demo\service\PersonService.class
+com\example\demo\Divider.class
+com\example\demo\service\MessageService.class
+com\example\demo\repository\PersonRepository.class
+com\example\demo\controller\PersonController.class
+com\example\demo\repository\MessageRepository.class
+com\example\demo\Adder.class
+com\example\demo\Subtractor.class
