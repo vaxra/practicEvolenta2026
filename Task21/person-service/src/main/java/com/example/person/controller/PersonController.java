@@ -1,7 +1,8 @@
 package com.example.person.controller;
 
 import com.example.person.dto.Person;
-import com.example.person.repository.PersonRepository;
+import com.example.person.service.PersonService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,48 +18,37 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/person")
+@RequiredArgsConstructor
 public class PersonController {
 
-	private final PersonRepository repository;
-
-	public PersonController(PersonRepository repository) {
-		this.repository = repository;
-	}
+	private final PersonService personService;
 
 	@GetMapping
 	public Iterable<Person> getAll() {
-		return repository.findAll();
+		return personService.findAll();
 	}
 
 	@GetMapping("/{id}")
 	public Optional<Person> getById(@PathVariable int id) {
-		return repository.findById(id);
+		return personService.findById(id);
 	}
 
 	@PostMapping
 	public Person create(@RequestBody Person person) {
-		return repository.save(person);
+		return personService.create(person);
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Person> update(@PathVariable int id, @RequestBody Person person) {
-		return repository.findById(id)
-				.map(existing -> {
-					existing.setFirstname(person.getFirstname());
-					existing.setSurname(person.getSurname());
-					existing.setLastname(person.getLastname());
-					existing.setBirthday(person.getBirthday());
-					return ResponseEntity.ok(repository.save(existing));
-				})
-				.orElseGet(() -> {
-					person.setId(id);
-					return new ResponseEntity<>(repository.save(person), HttpStatus.CREATED);
-				});
+		PersonService.SaveResult<Person> result = personService.saveOrUpdate(id, person);
+		return result.created()
+				? new ResponseEntity<>(result.entity(), HttpStatus.CREATED)
+				: ResponseEntity.ok(result.entity());
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
-		repository.deleteById(id);
+		personService.delete(id);
 	}
 
 }
