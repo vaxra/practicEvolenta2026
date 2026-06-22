@@ -1,0 +1,11 @@
+com\example\weather\config\WeatherConfig.class
+com\example\weather\model\Main.class
+com\example\weather\WeatherApplication.class
+com\example\weather\model\Root.class
+com\example\weather\model\Clouds.class
+com\example\weather\model\Weather.class
+com\example\weather\controller\WeatherController.class
+com\example\weather\model\Coord.class
+com\example\weather\model\Sys.class
+com\example\weather\service\WeatherService.class
+com\example\weather\model\Wind.class
